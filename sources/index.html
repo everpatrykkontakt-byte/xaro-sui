@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>XARO – Token Sui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/@mysten/wallet-adapter-wallet-standard"></script>
+  <script src="https://unpkg.com/@mysten/wallet-adapter"></script>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f2f2f2; margin:0; }
+    .container { max-width:600px; margin:40px auto; background:#fff; padding:32px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+    .wallet-btn { font-size: 1.3em; background: #f1f7ff; border: none; border-radius: 6px; padding: 10px 20px; cursor: pointer; display: flex; align-items: center; gap:8px;}
+    .wallet-btn:active { background: #e1ecf7; }
+    .address { font-family:monospace; color:#0070f3; word-break:break-all; margin-top: 8px; }
+    .transfer-code { margin-top: 24px; background: #eaf8e5; border-left: 4px solid #5cb85c; padding: 10px 16px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>XARO – Kryptowaluta na Sui</h1>
+    <button id="wallet-emoji-btn" class="wallet-btn">👜 Połącz portfel</button>
+    <div id="wallet-address"></div>
+    <h2>Transfer lub odbierz nagrodę</h2>
+    <input id="to-address" type="text" placeholder="Adres odbiorcy" style="width:100%;margin-bottom:8px;">
+    <input id="amount" type="number" min="1" placeholder="Kwota XARO" style="width:100px;">
+    <button id="send-xaro">Wyślij XARO</button>
+    <div id="transfer-result"></div>
+    <div class="transfer-code" id="code-box" style="display:none;"></div>
+    <script>
+      let walletAddress = "";
+      document.getElementById('wallet-emoji-btn').onclick = async () => {
+        if (!window.suiWallet) {
+          alert('Zainstaluj portfel Sui (Surf, Suiet, Nightly, Martian) i odśwież stronę.');
+          return;
+        }
+        try {
+          const accounts = await window.suiWallet.request({ method: 'sui_connect' });
+          walletAddress = accounts[0].address;
+          document.getElementById('wallet-address').innerHTML = 'Twój adres: <span class="address">' + walletAddress + '</span>';
+        } catch (e) {
+          document.getElementById('wallet-address').innerText = 'Nie udało się połączyć z portfelem.';
+        }
+      };
+
+      // DEMO: po kliknięciu wyślij pokazuje przykładowy 45-cyfrowy kod
+      document.getElementById('send-xaro').onclick = () => {
+        const to = document.getElementById('to-address').value;
+        const amt = document.getElementById('amount').value;
+        if (!walletAddress) {
+          document.getElementById('transfer-result').textContent = 'Najpierw połącz portfel!';
+          return;
+        }
+        if (!to || !amt) {
+          document.getElementById('transfer-result').textContent = 'Podaj adres odbiorcy i kwotę!';
+          return;
+        }
+        // Tutaj normalnie wywołujesz transakcję i odbierasz kod z eventu
+        // Na potrzeby demo generuję losowy 45-cyfrowy kod:
+        let code = "";
+        for(let i=0;i<45;i++) code += Math.floor(Math.random()*10);
+        document.getElementById('code-box').style.display = 'block';
+        document.getElementById('code-box').textContent = "Kod transakcji (unikalny): " + code;
+        document.getElementById('transfer-result').textContent = 'Wysłano żądaną transakcję (demo).';
+      }
+    </script>
+  </div>
+</body>
+</html>
