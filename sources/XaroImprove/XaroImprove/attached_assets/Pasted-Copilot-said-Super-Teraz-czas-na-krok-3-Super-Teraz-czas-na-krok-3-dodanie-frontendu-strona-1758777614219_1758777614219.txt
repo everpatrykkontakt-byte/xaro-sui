@@ -1,0 +1,418 @@
+Copilot said: Super! Teraz czas na krok 3 –
+Super! Teraz czas na krok 3 – dodanie frontendu (strona internetowa):
+
+3. Dodaj plik index.html do repozytorium
+W repozytorium kliknij "Add file" → "Create new file".
+Jako nazwę wpisz:
+index.html
+Skopiuj i wklej poniższy kod do edytora na GitHub:
+
+index.html
+v12
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>XARO – Token Sui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+Kliknij na dole "Commit new file".
+Gdy to zrobisz:
+
+Będziesz mieć frontend gotowy do działania na GitHub Pages (także na telefonie!).
+Możesz przetestować stronę lokalnie, lub włączyć GitHub Pages (Settings → Pages → wybierz branch main i folder root).
+Daj znać, kiedy wykonasz ten krok lub jeśli chcesz instrukcję jak włączyć GitHub Pages!
+
+You said: Tez zrobilem chyba
+Tez zrobilem chyba 
+Copilot said: Super! Jeśli masz już plik index.html w
+Super! Jeśli masz już plik index.html w repozytorium, to Twój projekt XARO jest prawie gotowy do uruchomienia jako aplikacja webowa.
+Ostatni krok to uruchomienie strony przez GitHub Pages, żeby każdy (także Ty na telefonie) mógł wejść i zobaczyć działający frontend.
+
+Jak włączyć GitHub Pages w swoim repozytorium?
+Wejdź w swoje repozytorium (np. xaro-sui) na GitHub.
+Kliknij zakładkę Settings (Ustawienia) na górze.
+W menu po lewej wybierz Pages (lub „Pages and branches” – zależnie od wersji GitHuba).
+W sekcji Build and deployment:
+Wybierz „Source: Deploy from a branch”.
+Wybierz branch „main” i folder „/ (root)” (lub „/docs”, jeśli plik index.html wrzuciłeś do folderu docs).
+Kliknij Save.
+Po chwili pojawi się link do Twojej strony – coś w stylu:
+Code
+https://everpatrykkontakt-byte.github.io/xaro-sui/
+Wejdź w ten link w przeglądarce (na komputerze i telefonie) – powinna wyświetlić się Twoja aplikacja XARO.
+Daj znać, jeśli coś nie działa lub chcesz pomoc z kolejnym krokiem!
+Jeśli chcesz, prześlę gotową instrukcję README.md do repozytorium lub pomogę z wdrożeniem kontraktu Move na Sui.
+
+You said: No zrobilem
+No zrobilem 
+Copilot said: Świetnie! Masz już zarówno kontrakt Move (w
+Świetnie! Masz już zarówno kontrakt Move (w katalogu sources/xaro.move), jak i frontend (index.html). Ostatnie kroki, żeby Twój projekt XARO był w pełni gotowy do testów i prezentacji:
+
+1. (Opcjonalnie, ale polecane) Włącz GitHub Pages
+Wejdź w repozytorium na GitHub.
+Kliknij zakładkę Settings.
+Po lewej wybierz Pages.
+W sekcji „Build and deployment” wybierz:
+Source: Deploy from a branch
+Branch: main
+Folder: /(root)
+Kliknij Save.
+Po chwili pojawi się link do Twojej strony (np. https://everpatrykkontakt-byte.github.io/xaro-sui/).
+2. (Opcjonalnie) Dodaj plik README.md z instrukcją
+Chcesz, abym przygotował dla Ciebie prosty README.md z opisem projektu, instrukcją uruchomienia Move oraz obsługi strony?
+To bardzo ułatwi prezentację projektu i testy!
+
+3. (Opcjonalnie) Wdrażanie kontraktu Move na Sui
+Jeśli chcesz przeprowadzić wdrożenie kontraktu na blockchainie Sui i testować prawdziwy token XARO, mogę przygotować instrukcję krok po kroku (Move CLI lub Sui Move Studio).
+
+Napisz, co chcesz zrobić dalej:
+
+Czy mam wygenerować gotowy plik README.md?
+Czy chcesz pełną instrukcję jak wdrożyć kontrakt Move na Sui i połączyć frontend z blockchainem?
+Czy chcesz coś jeszcze dodać do projektu?
+Daj znać – pomogę Ci z kolejnymi krokami!
+
+You said: https://everpatrykkontakt-byte.github.io/xaro-sui/ tylko my own token pisze
+https://everpatrykkontakt-byte.github.io/xaro-sui/ tylko  my own token pisze 
+Copilot said: To oznacza, że Twój frontend (strona index.html)
+To oznacza, że Twój frontend (strona index.html) nie jest jeszcze połączony z wdrożonym kontraktem tokena XARO na Sui.
+Obecnie na stronie wyświetla się tylko domyślny tekst lub demo, bo nie ma jeszcze prawdziwego tokena na blockchainie.
+
+Co zrobić, by mieć własny token XARO na blockchainie Sui, a nie tylko demo?
+Wgrałeś kod kontraktu do sources/xaro.move — to już masz.
+Musisz jeszcze wdrożyć (deploy) ten kontrakt na blockchainie Sui – wtedy Twój token XARO będzie istniał naprawdę, a nie tylko jako demo na stronie.
+Musisz zaktualizować frontend, by korzystał z prawdziwego kontraktu (adres/token type).
+Instrukcja krok po kroku
+1. Deploy kontrakt Move na Sui (przykład: Sui Move Studio)
+Wejdź na Sui Move Studio online lub użyj Sui CLI.
+Utwórz nowy projekt i wklej tam zawartość pliku xaro.move.
+Kliknij “Deploy” (Wdróż).
+Otrzymasz adres pakietu kontraktu (package ID).
+Zainicjuj kontrakt, jeśli wymaga (np. wołając funkcję init).
+2. Zapisz dane tokena (address, type, package ID)
+Zanotuj adres kontraktu (packageID) i typ tokena XARO (np. 0x...::xaro_token::Xaro).
+Będzie to potrzebne do interakcji ze smart kontraktem i wyświetlania faktycznych danych na stronie.
+3. Zaktualizuj frontend (index.html)
+Zmień kod strony, by zamiast “my own token” wyświetlał Twój token XARO, pobierał saldo i transakcje z blockchaina Sui, używał prawdziwego adresu kontraktu i typów.
+Obsłuż transakcje: mint, transfer, reward, pokazuj kod 45-cyfrowy z eventów kontraktu.
+Co dalej?
+Chcesz gotowy przykład kodu, jak połączyć frontend z wdrożonym kontraktem XARO na Sui?
+A może chcesz szczegółową instrukcję wdrożenia przez Sui Move Studio lub CLI – i jak zintegrować frontend z blockchainem?
+
+Napisz, co dokładnie chcesz zrobić dalej – przeprowadzę Cię krok po kroku!
+
+You said: https://github.com/everpatrykkontakt-byte/xaro-sui/tree/main/sources
+https://github.com/everpatrykkontakt-byte/xaro-sui/tree/main/sources
+Copilot said: Świetnie! Twój katalog sources w repozytorium GitHub
+Świetnie! Twój katalog sources w repozytorium GitHub jest poprawnie utworzony:
+https://github.com/everpatrykkontakt-byte/xaro-sui/tree/main/sources
+
+Co teraz zrobić, by mieć własnego tokena XARO na blockchainie Sui i widzieć go na froncie?
+
+KROK 1: Wdróż kontrakt Move na blockchain Sui
+Wejdź na Sui Move Studio
+(albo zainstaluj Sui CLI, jeśli wolisz lokalnie).
+
+Utwórz nowy projekt i wklej kod z pliku sources/xaro.move.
+
+Kliknij „Deploy” (Wdróż) i poczekaj na potwierdzenie.
+Otrzymasz packageId (adres kontraktu w blockchainie).
+
+Zainicjuj kontrakt jeśli jest taka funkcja (np. wołając publiczną funkcję init z odpowiednimi parametrami).
+
+KROK 2: Zanotuj dane tokena
+Zanotuj adres kontraktu / packageId (np. 0x123...)
+Zanotuj dokładny typ tokena (np. 0x123...::xaro_token::Xaro)
+Przyda się to do połączenia z frontendem i walletem
+KROK 3: Zintegruj frontend z blockchainem
+W pliku index.html wstaw odpowiednie dane tokena i kontraktu zamiast demo („my own token”).
+Użyj packageId i typu tokena, które uzyskałeś po wdrożeniu.
+Zintegruj funkcje transfer/mint z wallet adapterem Sui (w miejsce symulacji losowego kodu).
+Możesz użyć Sui.js, wallet-adapter, lub innego SDK.
+Po wykonanej transakcji wyciągnij kod 45-cyfrowy z eventu emitowanego przez kontrakt (event TransferEvent).
+Przykładowe miejsce do podmiany w index.html:
+js
+const tokenType = "0xTWOJ_PACKAGE_ID::xaro_token::Xaro";
+oraz w funkcjach wysyłających transakcje – zamiast demo, wywołaj rzeczywisty kontrakt.
+
+Chcesz gotowy kod JS do integracji z Sui blockchain?
+Jeśli podasz packageId i typ tokena, mogę przygotować dla Ciebie fragment kodu do index.html, który automatycznie łączy się z Twoim kontraktem, wysyła prawdziwe transakcje i pobiera kod 45-cyfrowy z eventu.
+Daj znać, czy wdrożyłeś już kontrakt na Sui (i jaki jest packageId), a dostosuję dla Ciebie frontend!
+Podsumowując:
+
+Masz już repozytorium i katalog sources.
+Teraz czas na wdrożenie kontraktu Move na Sui.
+Następnie zaktualizuj frontend, by korzystał z prawdziwych danych z blockchaina.
+Jeśli potrzebujesz dokładnej instrukcji wdrożenia przez Sui Move Studio lub kodu JS do obsługi Twojego tokena – napisz, a natychmiast ją dostaniesz!
+
+You said: To zrob ty
+To zrob ty
+Copilot said: Świetnie, jesteś już bardzo blisko! Mogę
+Świetnie, jesteś już bardzo blisko!
+Mogę przygotować dla Ciebie wszystkie pliki integrujące frontend z Twoim kontraktem na Sui — ale potrzebuję jeszcze jednej rzeczy:
+
+Musisz najpierw wdrożyć (deploy) kontrakt XARO na blockchainie Sui (testnet/mainnet) przez Sui Move Studio lub Sui CLI.
+Dzięki temu będziesz mieć swój własny, prawdziwy adres kontraktu (packageId) i typ tokena.
+Tylko wtedy frontend może się z nim połączyć i korzystać z prawdziwego tokena, nie tylko demo.
+Co muszę od Ciebie dostać:
+Adres kontraktu (packageId) wygenerowany po deployu (wygląda jak 0x...).
+Dokładny typ Twojego tokena (np. 0x12345...::xaro_token::Xaro).
+Jak to zrobić w Sui Move Studio?
+Wejdź na Sui Move Studio Online.
+Załaduj swój kod kontraktu xaro.move.
+Kliknij „Deploy”.
+Skopiuj packageId (adres kontraktu).
+(Jeśli trzeba) Zainicjuj kontrakt przez publiczną funkcję init (wygeneruje pierwszy obiekt Xaro).
+Skopiuj typ tokena (np. 0x...::xaro_token::Xaro).
+Jak tylko mi to podasz, przygotuję specjalnie dla Ciebie:
+
+Gotowy kod frontend (index.html) połączony z Twoim kontraktem.
+Przykład wywołania transferu/mintu z pokazywaniem prawdziwego 45-cyfrowego kodu z blockchaina Sui.
+Instrukcję jak to uruchomić.
+Zrób deploy i podaj packageId oraz typ tokena!
+Jeśli chcesz – mogę napisać dokładną instrukcję deployu krok po kroku (pod Mac/Windows – Sui Move Studio lub CLI).
+Daj znać, co wybierasz!
+
+You said: Nie dziala ta strona
+Nie dziala ta strona
+Copilot said: Rozumiem, że strona pod adresem [https://everpatrykkontakt-byte.github.io/xaro-sui/](https://everpatrykkontakt-byte.github.io/xaro-sui/) się
+Rozumiem, że strona pod adresem https://everpatrykkontakt-byte.github.io/xaro-sui/ się nie wyświetla lub nie działa poprawnie. Oto jak możesz szybko sprawdzić i naprawić problem:
+
+1. Sprawdź, czy plik index.html jest w katalogu głównym repozytorium
+Powinien być na poziomie głównym (nie w /sources ani w innym folderze).
+Ścieżka powinna wyglądać tak:
+xaro-sui/index.html
+2. Sprawdź ustawienia GitHub Pages
+Wejdź w repozytorium na GitHub.
+Kliknij Settings > Pages (czasem to "Pages and branches" po lewej).
+Upewnij się, że wybrany jest branch: main oraz folder: / (root).
+Kliknij Save i poczekaj kilka minut na propagację.
+3. Sprawdź czy strona ładuje się bezpośrednio
+Wejdź na https://everpatrykkontakt-byte.github.io/xaro-sui/
+Jeśli pojawia się "404", to znaczy, że GitHub Pages nie widzi pliku index.html w katalogu głównym lub nie został jeszcze opublikowany.
+4. Jeśli plik index.html jest w dobrym miejscu, a strona dalej nie działa:
+Spróbuj wymusić odświeżenie (Ctrl+F5 na komputerze, lub wyczyść cache w telefonie).
+Poczekaj kilka minut – czasem GitHub Pages potrzebuje chwili na zaktualizowanie strony po zmianach.
+5. Sprawdź, czy plik index.html nie jest pusty
+Wejdź na https://github.com/everpatrykkontakt-byte/xaro-sui/blob/main/index.html
+Upewnij się, że zawiera kod HTML (a nie tylko domyślny tekst lub jest pusty).
+6. Jeśli nadal nie działa – napisz, co dokładnie widzisz:
+Czy pojawia się 404 Not Found?
+Czy jest biała strona/komunikat o błędzie?
+Czy coś się wczytuje, ale nie działa poprawnie (np. błąd JS)?
+Możesz też napisać tutaj dokładny opis lub wkleić zrzut ekranu błędu, a podpowiem Ci konkretnie, co poprawić!
+
+Jeśli chcesz, mogę też sprawdzić Twoje repozytorium i podać Ci konkretne kroki naprawcze – wystarczy, że potwierdzisz.
+
+You said: Nie no moja strina dziala ale tylko
+Nie no moja strina dziala ale tylko pokazyjr moj token 
+Copilot said: Rozumiem – Twoja strona GitHub Pages **wyświetla
+Rozumiem – Twoja strona GitHub Pages wyświetla się, ale pokazuje tylko domyślny tekst (np. „my own token” lub demo), a nie faktyczne dane Twojego wdrożonego tokena XARO z blockchaina Sui.
+
+To jest normalne po wgraniu tylko pliku index.html i kodu Move.
+Aby strona pokazywała prawdziwe informacje o Twoim tokenie (np. saldo, transfery, kod transakcji z eventów), potrzebujesz:
+
+1. Wdrożyć (deploy) kontrakt Move na blockchainie Sui
+Twój plik sources/xaro.move na GitHub to kod kontraktu, ale samo wgranie go na GitHub NIE powoduje, że token istnieje na blockchainie!
+Musisz wdrożyć ten kontrakt na Sui (np. przez Sui Move Studio lub Sui CLI).
+
+2. Uzyskać dane kontraktu/tokena po wdrożeniu
+Po deployu otrzymasz:
+
+Package ID (adres kontraktu, np. 0xabc123...)
+Typ tokena (np. 0xabc123...::xaro_token::Xaro)
+(Możliwe że będziesz musiał wywołać funkcję init, aby zainicjować token)
+3. Zmodyfikować frontend (index.html)
+Musisz podmienić:
+
+Adres kontraktu i typ tokena w kodzie JS
+Funkcje pobierania salda, transferów, mintowania itp., aby korzystały z Twojego prawdziwego kontraktu na Sui, a nie tylko symulacji/demo.
+4. (Opcjonalnie) Dodać integrację z wallet-adapter/sui.js, by transakcje i odczyty były faktyczne
+Podsumowując:
+Twoja strona działa, ale pokazuje tylko statyczny tekst, bo nie jest połączona z blockchainem.
+Musisz:
+
+Wdrożyć kontrakt na Sui (move studio/cli)
+Skopiować Package ID i typ tokena
+Zintegrować frontend z tym kontraktem
+(Opcjonalnie) Umożliwić prawdziwe transakcje z portfelem Sui
+Chcesz instrukcję jak wdrożyć kontrakt na Sui i jak zintegrować frontend?
+Jeśli tak – napisz, czy chcesz wersję przez Move Studio (przeglądarka) czy przez Sui CLI (na komputerze). Poprowadzę Cię krok po kroku!
+
+You said: No to dodaj
+No to dodaj
+Copilot said: Świetnie! Przeprowadzę Cię przez proces wdrożenia Twojego
+Świetnie! Przeprowadzę Cię przez proces wdrożenia Twojego tokena XARO na blockchainie Sui oraz połączenia frontendu z prawdziwym kontraktem.
+
+CO ZROBIĘ:
+Przejdę przez deploy kontraktu na Sui (instrukcja).
+Pokażę jak uzyskać packageId oraz typ tokena.
+Zaktualizuję Twój frontend (index.html), aby korzystał z prawdziwych danych z blockchaina Sui.
+1. Deploy kontraktu (Move) na Sui przez Sui Move Studio
+Krok po kroku:
+
+Wejdź na: https://studio.mystenlabs.com/
+Kliknij New Project.
+Wklej cały kod z pliku sources/xaro.move do edytora.
+Kliknij Deploy.
+Po wdrożeniu skopiuj packageId (adres pakietu kontraktu), np. 0xabc123....
+Jeśli Twój kontrakt wymaga inicjalizacji (np. poprzez funkcję init), uruchom ją przez panel po prawej (wpisz parametry, kliknij "Run").
+2. Zanotuj packageId i typ tokena
+packageId znajdziesz w wynikach deployu (np. 0xabc123...)
+Typ tokena będzie wyglądał np.:
+0xabc123...::xaro_token::Xaro
+Zachowaj te dane!
+
+3. Zaktualizuj frontend (index.html)
+Podstawę frontu już masz. Teraz pokażę, jak dodać prawdziwe pobieranie informacji o tokenie XARO, saldo, transakcje, i generowanie transakcji z kodem 45-cyfrowym (na podstawie eventu z kontraktu).
+
+Przykładowy fragment kodu do podmiany:
+
+index.html
+v13
+<script type="module">
+import { SuiClient, getFullnodeUrl } from "https://unpkg.com/@mysten/sui.js?module";
+
+const packageId = "TU_WKLEJ_PACKAGE_ID"; // np. 0xabc123...
+const tokenType = `${packageId}::xaro_token::Xaro`;
+
+Ważne:
+
+Zamień TU_WKLEJ_PACKAGE_ID na swoje packageId z blockchaina Sui.
+Jeśli zdeployujesz kontrakt na testnet — użyj testnet, jeśli na mainnet — mainnet.
+Jeśli chcesz żebym zrobił to za Ciebie:
+Podaj mi packageId po deployu kontraktu!
+(Wtedy przygotuję gotowy plik index.html z Twoimi danymi i możesz od razu go wrzucić.)
+
+Jeśli chcesz, żebym zdeployował kontrakt na Sui i skonfigurował wszystko dla Ciebie:
+Niestety, nie mam dostępu do Twojego portfela Sui ani możliwości deployowania za Ciebie, ale mogę przeprowadzić Cię krok po kroku przez cały proces — nawet z obrazkami, jeśli chcesz!
+
+Daj mi packageId (lub napisz, jeśli chcesz pełną instrukcję deployu z obrazkami), a dostarczę gotowy, w pełni działający index.html dla Twojego tokena XARO!
+
+You said: Ale czemu na tej stronie tylko readme
+Ale czemu na tej stronie tylko readme sie mi wyswietla
+Copilot said: Na GitHub Pages domyślnie wyświetlana jest **strona
+Na GitHub Pages domyślnie wyświetlana jest strona README tylko wtedy, gdy nie masz pliku index.html w katalogu głównym repozytorium (root), albo plik jest źle nazwany lub nieprawidłowo umieszczony.
+
+Powód, dla którego widzisz tylko README:
+
+Twój plik index.html nie znajduje się w katalogu głównym (root) repozytorium.
+Może być w katalogu sources lub innym podfolderze, a nie bezpośrednio w głównym katalogu.
+GitHub Pages szuka pliku index.html w katalogu głównym repozytorium – jeśli go nie znajdzie, wyświetla plik README.md.
+Jak naprawić, aby strona działała:
+Przenieś plik index.html do katalogu głównego repozytorium (/)
+
+Ścieżka powinna być:
+Code
+xaro-sui/index.html
+Nie w:
+Code
+xaro-sui/sources/index.html
+lub innym podfolderze!
+Usuń lub przenieś kopie index.html z innych katalogów (zostaw tylko jedną w katalogu głównym!).
+
+Wejdź w ustawienia GitHub Pages:
+
+Settings → Pages → upewnij się, że źródło to main i / (root).
+Poczekaj kilka minut i odśwież stronę
+
+Wejdź na: https://everpatrykkontakt-byte.github.io/xaro-sui/
+Podsumowanie
+Tylko plik index.html w katalogu głównym repozytorium jest wyświetlany przez GitHub Pages.
+Jeśli nie ma go w root, GitHub Pages pokaże README.
+Zrób to i daj znać, czy działa! Jeśli potrzebujesz, mogę dla Ciebie przygotować prawidłowy plik i przesłać gotowy kod do wklejenia!
+
+You said: Nic to nie zmienilo
+Nic to nie zmienilo
+Copilot said: Dzięki za informację. Jeśli po przeniesieniu pliku
+Dzięki za informację. Jeśli po przeniesieniu pliku index.html do katalogu głównego nadal wyświetla się tylko README, to najczęściej oznacza jeden z poniższych problemów:
+
+Najczęstsze przyczyny:
+Plik index.html nie jest w katalogu głównym (/) repozytorium.
+
+Sprawdź, czy ścieżka to dokładnie:
+https://github.com/everpatrykkontakt-byte/xaro-sui/blob/main/index.html
+NIE:
+.../sources/index.html
+ani żaden inny podfolder.
+Ustawienia GitHub Pages są nieprawidłowe.
+
+Musi być ustawione na branch main i folder / (root).
+Plik index.html ma literówkę w nazwie (np. Index.html, index.htm, index.HTML)
+
+Nazwa MUSI być dokładnie: index.html (małe litery).
+Repozytorium jest prywatne
+
+GitHub Pages działa tylko dla repozytoriów publicznych (lub z włączonym GitHub Pages dla organizacji).
+GitHub Pages nie “przetrawił” jeszcze zmian
+
+Czasem trzeba poczekać 2–5 minut i odświeżyć stronę (najlepiej Ctrl+F5).
+Co zrobić krok po kroku:
+Wejdź do repo na GitHub
+https://github.com/everpatrykkontakt-byte/xaro-sui
+
+Upewnij się, że plik jest w głównym katalogu:
+
+W panelu plików powinna być taka struktura:
+Code
+xaro-sui/
+  index.html
+  README.md
+  sources/
+    xaro.move
+Kliknij w plik index.html i sprawdź zawartość.
+
+Powinien być to poprawny plik HTML (nie pusty, nie markdown, nie README).
+Wejdź w "Settings" → "Pages" i sprawdź ustawienia:
+
+Source: main
+Folder: / (root)
+Odczekaj kilka minut, odśwież stronę: https://everpatrykkontakt-byte.github.io/xaro-sui/
+
+Chcesz, żebym sprawdził dokładnie Twoje repo?
+Proszę, napisz czy w Twoim repozytorium jest już plik:
+https://github.com/everpatrykkontakt-byte/xaro-sui/blob/main/index.html
+
+Jeśli go nie ma — poniżej masz gotowy plik do wklejenia do katalogu głównego repo:
+
+
+index.html
+v14
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>XARO – Token Sui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+Wklej ten plik do katalogu głównego, zacommituj i odczekaj kilka minut, a potem odśwież stronę.
+Jeśli dalej nie działa — napisz, podepnę się do konkretnego problemu z Twoim repo!
+
+You said: https://github.com/everpatrykkontakt-byte/xaro-sui
+https://github.com/everpatrykkontakt-byte/xaro-sui
+Copilot said: Twoje repozytorium [xaro-sui](https://github.com/everpatrykkontakt-byte/xaro-sui) wyświetla README na GitHub
+Twoje repozytorium xaro-sui wyświetla README na GitHub Pages, ponieważ brakuje pliku index.html w katalogu głównym repozytorium.
+Aby Twoja strona GitHub Pages zaczęła wyświetlać frontend tokena XARO, wykonaj te kroki:
+
+1. Dodaj plik index.html do katalogu głównego repozytorium
+Stwórz w repozytorium plik o nazwie index.html (nie w żadnym podfolderze, tylko w głównym katalogu — razem z README.md).
+
+Poniżej masz gotowy plik do wklejenia. Skopiuj ten kod i dodaj przez „Add file” → „Create new file” na GitHub, nazwij go dokładnie index.html:
+
+
+index.html
+v15
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>XARO – Kryptowaluta na Sui</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+2. Ustaw GitHub Pages na branch main i folder / (root)
+Wejdź w repozytorium → Settings → Pages.
+Upewnij się, że Source to main i folder to / (root).
+3. Odczekaj kilka minut i odśwież stronę
+Wejdź na:
+https://everpatrykkontakt-byte.github.io/xaro-sui/
+
+Po tych krokach strona powinna się wyświetlać!
+Daj znać, gdy dodasz plik lub napisz, jeśli chcesz go dodać automatycznie przez commit.
